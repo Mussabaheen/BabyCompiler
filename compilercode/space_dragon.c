@@ -8,6 +8,9 @@
 #include<poll.h>
 #include<sys/select.h>
 #include<pthread.h>
+//written by Mussabaheen Malik
+//5th semester Project
+//Baby Compiler
 void finding_error(int *err_no,char *buf,int *line_no);
 int checking_linenumber(char *buf);
 void show(char *buf);
