@@ -84,10 +84,6 @@ void *thread_assembly(void)
 							
 							strcpy(command_detected_p[index1],data_for_a_temp);
 
-							for(sz=0;data_for_a_temp[sz]!='\0' ;sz++)
-							{
-						//		printf("data : %c ",data_for_a_temp[sz]);		
-							}	
 							
 							index1++;
 							int print_fd=open("printf.txt",O_RDONLY);
@@ -138,10 +134,6 @@ void *thread_assembly(void)
 							close(fd_o);
 							char buf_assem[10],buf_assem1[10];
 							srand(time(NULL));
-							//int rand_num=rand()%10;
-							//do{
-							//	rand_num=rand()%10	
-							//	}while(previous_r!=rand_num);
 							
 
 							sprintf(buf_assem,"%d",index1);
@@ -159,7 +151,6 @@ void *thread_assembly(void)
 								
 								strcat(buffer_1,buf_assem);	
 								strcat(buffer_1,".o");
-								//printf("File : %s \n",buffer_1);
 								int so=	system(buffer_1);
 								if(so)
 								{
@@ -171,30 +162,18 @@ void *thread_assembly(void)
 									strcat(buf_out,"./");
 									strcat(buf_out,buf_assem);
 									strcat(buf_out,".o");
-								//	printf("output : %s \n",buf_out);
 									int check23=system("./a.out");
-							//		printf("status : %d \n",check23);
 									if(check23)
 									{
 										perror("Error ");
 									}		
 							
 							strcpy(data_for_print,"");	
-                                                       //	remove("./a.out");
 							}
 							while(bytesr_p!=0);
 					
-						//	write(fd_o,data_for_print,checker);
-						//	system("clang assembly_code.s");
-                                                  //  	system("./a.out");
-                                                	// remove("assembly_code.s");
-                                                  //      remove("./a.out");
 						}
-						else
-						{
 							
-						//	printf("Input  %s \n",data_for_a_temp);
-						}
 					}
 					else
 					{
@@ -205,7 +184,6 @@ void *thread_assembly(void)
 					a=b;
 					
 					strcpy(data_for_a,"");
-					//break;
 				}
 				else
 				{
@@ -287,10 +265,6 @@ void *thread_mips(int *fd)
                             
                             strcpy(command_detected_p[index1],data_for_a_temp);
                             
-                            for(sz=0;data_for_a_temp[sz]!='\0' ;sz++)
-                            {
-                                //        printf("data : %c ",data_for_a_temp[sz]);
-                            }
                             
                             index1++;
                             int print_fd=open("printf.txt",O_RDONLY);
@@ -341,10 +315,6 @@ void *thread_mips(int *fd)
                                 close(fd_o);
                                 char buf_assem[10],buf_assem1[10];
                                 srand(time(NULL));
-                                //int rand_num=rand()%10;
-                                //do{
-                                //    rand_num=rand()%10
-                                //    }while(previous_r!=rand_num);
                                 
                                 
                                 sprintf(buf_assem,"%d",index1);
@@ -362,7 +332,6 @@ void *thread_mips(int *fd)
                                 
                                 strcat(buffer_1,buf_assem);
                                 strcat(buffer_1,".o");
-                                //printf("File : %s \n",buffer_1);
                                 int so=    system(buffer_1);
                                 if(so)
                                 {
@@ -374,29 +343,16 @@ void *thread_mips(int *fd)
                                 strcat(buf_out,"./");
                                 strcat(buf_out,buf_assem);
                                 strcat(buf_out,".o");
-                                //    printf("output : %s \n",buf_out);
                                 int check23=system("./a.out");
-                                //        printf("status : %d \n",check23);
                                 if(check23)
                                 {
                                     perror("Error ");
                                 }
                                 
                                 strcpy(data_for_print,"");
-                                //    remove("./a.out");
                             }
                             while(bytesr_p!=0);
                             
-                            //    write(fd_o,data_for_print,checker);
-                            //    system("clang assembly_code.s");
-                            //      system("./a.out");
-                            // remove("assembly_code.s");
-                            //      remove("./a.out");
-                        }
-                        else
-                        {
-                            
-                            //    printf("Input  %s \n",data_for_a_temp);
                         }
                     }
                     else
@@ -408,7 +364,6 @@ void *thread_mips(int *fd)
                     a=b;
                     
                     strcpy(data_for_a,"");
-                    //break;
                 }
                 else
                 {
@@ -439,7 +394,6 @@ int main(int argc,char *argv[])
 
 	sigfillset(&new_set);
 
-//	sigprocmask(SIG_BLOCK,&new_set,NULL);
 	strcpy(buf,"");
 	for(int a=0;a<100;a++)
 	{
@@ -464,7 +418,6 @@ int main(int argc,char *argv[])
 	command_length[0]=6;
 	command_length[1]=5;
 	
-//	printf("length : %d \n",strlen(commands[0]));
 		if(argv[1]==NULL)
 		{
 			printf("No Input File Provided! \n");
@@ -476,11 +429,9 @@ int main(int argc,char *argv[])
 	do
 	{
 		bytesread=read(fd_code,buf,1000);
-//		printf("%s",buf);
 	}
 	while(bytesread<10000?buf[bytesread]='\0':printf("LARGE FILE! \n"));
 	
-//	printf("%s",buf);
 	
 	remove("Lexer.txt");
 	int fd=open("Lexer.txt",O_WRONLY|O_CREAT,0777);
@@ -496,7 +447,6 @@ int main(int argc,char *argv[])
                                 }
 		for(int b=0;b<2;b++)
 		{
-//		fprintf(stderr,"%c : %c \n",commands[b][0],buf[a]);
 			if(buf[a]==commands[b][0])
 			{
 				if(checking_linenumber(&buf[a]))
@@ -505,12 +455,10 @@ int main(int argc,char *argv[])
 				}
 	
 				int command_index=0;
-				//fprintf(stderr,"found_Same: %c: %c \n",buf[a],commands[b][0]);
 				for(int c=a;commands[b][command_index]!='\0' ;c++)
 				{	
 					if(commands[b][command_index]!=buf[c])
 					{
-					//	printf("%c : %c \n",commands[b][command_index],buf[c]);
 						if(b==1 && check_oper[0]==1)
 						{
 							int er1=4;
@@ -525,11 +473,8 @@ int main(int argc,char *argv[])
 						break;
 						
 					}
-					//fprintf(stderr,"%c : %c %d\n",commands[b][command_index],buf[c],c);
 					command_index++;
-					//fprintf(stderr,"%d : %d \n",command_index,strlen(commands[b]));
 					int limit=(int)strlen(commands[b]);
-					//printf("%d : %d \n",command_index,limit);
 					if(command_index==limit)
 					{
 						check_oper[a]=1;
@@ -540,11 +485,9 @@ int main(int argc,char *argv[])
 						for(int terminator=0;buf[index_of_oprand]!=';';terminator++)
 						{
 							int temp_index=index_of_oprand;
-					//		fprintf(stderr,"yes! %d ",a);
 							int error_check=3;
 							error_check=errorfinder(error_check,temp_index,buf,commands);
 								
-						//	fprintf(stderr,"yes! %d ",a);
 							if(error_check==-1)
 							{
 							
@@ -568,7 +511,6 @@ int main(int argc,char *argv[])
 							else
 							{
 							
-								printf("Hello");
 //								finding_error(&error_check,buf,&line_number);
 								unlink("Lexer.txt");
 								break;
