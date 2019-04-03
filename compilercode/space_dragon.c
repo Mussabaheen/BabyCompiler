@@ -377,10 +377,10 @@ void *thread_mips(int *fd)
 	pthread_exit(0);
 }
 
-
+//provide program with one external file which will be compiled
+//lexer will be produced according to it.
 int main(int argc,char *argv[])
 {
-	printf("");
 		int num_commands=2,bool_index=0;
 	char **lexer_tokens=(char **)malloc(sizeof(char)*1000);
 	int *bool_check=(int *)malloc(sizeof(char)*1000);
